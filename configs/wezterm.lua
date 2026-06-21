@@ -35,11 +35,6 @@ config.launch_menu = launch_menu
 config.default_cursor_style = "BlinkingBar"
 config.disable_default_key_bindings = true
 
--- Set WezTerm environment
-config.hide_tab_bar_if_only_one_tab = true -- Hide WezTerm tabs since Zellij has its own
--- Automatically launch or attach to a Zellij session on startup
-config.default_prog = { "zellij", "attach", "--create" }
-
 -- this adds the ability to use ctrl+v to paste the system clipboard
 config.keys = {
 	-- move left/right for windows pane
@@ -56,6 +51,12 @@ config.keys = {
 		key = "Insert",
 		mods = "SHIFT",
 		action = wezterm.action.PasteFrom("Clipboard"),
+	},
+	-- Clears both scrollback and the visible viewport
+	{
+		key = "k",
+		mods = "CTRL", -- or 'CMD' if you prefer
+		action = act.ClearScrollback("ScrollbackAndViewport"),
 	},
 }
 
@@ -153,5 +154,10 @@ config.background = {
 
 -- IMPORTANT: Sets WSL2 UBUNTU-22.04 as the defualt when opening Wezterm
 config.default_domain = "WSL:Ubuntu"
+
+-- Set WezTerm environment
+config.hide_tab_bar_if_only_one_tab = true -- Hide WezTerm tabs since Zellij has its own
+-- Automatically launch or attach to a Zellij session on startup
+config.default_prog = { "zellij", "attach", "--create" }
 
 return config

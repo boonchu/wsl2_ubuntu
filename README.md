@@ -20,5 +20,7 @@
     - `cargo install --locked zellij`
 -- set PATH
     - `export PATH=/home/bigchoo/.cargo/bin:$PATH`
+-- Run test Zelliji
+    - `zelliji attach -c`
 -- copy file `wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
