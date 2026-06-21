@@ -1,0 +1,20 @@
+# Customize Git Branch
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bright-black"
+
+# Customize Git Status Indicators
+[git_status]
+format = '[[(*$conflicted$untracked$modified$staged$renamed$deleted)](bright-black) ($ahead_behind$stashed)]($style)'
+style = "cyan"
+conflicted = " 🏳"
+untracked = "   "
+modified = "   "
+staged = "   "
+renamed = "  "
+deleted = "  "
+stashed = "  "
+ahead = " ⇡ "
+behind = " ⇣ "
+diverged = " ⇕ "
