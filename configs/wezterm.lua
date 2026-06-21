@@ -1,7 +1,18 @@
--- These are the basic's for using wezterm.
--- Mux is the mutliplexes for windows etc inside of the terminal
--- Action is to perform actions on the terminal
+-- ============================================================================
+-- WEZTERM CONFIGURATION
+-- ============================================================================
+-- WezTerm is a GPU-accelerated terminal emulator written in Rust.
+-- This config transforms WezTerm into a powerful terminal multiplexer,
+-- combining features from tmux, Zellij, and iTerm2 into one cohesive setup.
+--
+-- MODULAR STRUCTURE:
+--   helpers.lua    - Utility functions (is_vim, is_micro, cwd helpers)
+--   theme.lua      - Color schemes and theme definitions
+-- ============================================================================
+
 local wezterm = require("wezterm")
+local theme = require("theme")
+
 local mux = wezterm.mux
 local act = wezterm.action
 
@@ -15,6 +26,12 @@ local launch_menu = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+
+-- TAB BAR
+config.hide_tab_bar_if_only_one_tab = false
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.tab_max_width = 32
 
 -- Default config settings
 -- These are the default config settins needed to use Wezterm
@@ -30,6 +47,18 @@ config.color_scheme = "Ocean (dark) (terminal.sexy)"
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 15
 config.launch_menu = launch_menu
+
+-- BACKGROUND OPACITY
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 90
+
+-- WINDOW PADDING
+config.window_padding = {
+	left = 10,
+	right = 10,
+	top = 10,
+	bottom = 10,
+}
 
 -- makes my cursor blink
 config.default_cursor_style = "BlinkingBar"
@@ -60,10 +89,34 @@ config.keys = {
 	},
 }
 
--- adjust colors
+-- PANE SPLIT LINE AND TAB BAR STYLING
 config.colors = {
-	background = "#1a1b26",
-	split = "#7aa2f7", -- Color of the inner line separating your splits
+	split = theme.colors.pink,
+	tab_bar = {
+		background = theme.colors.bg,
+		active_tab = {
+			bg_color = theme.colors.bg_selection,
+			fg_color = theme.colors.fg_bright,
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = theme.colors.bg,
+			fg_color = theme.colors.fg_dim,
+		},
+		inactive_tab_hover = {
+			bg_color = theme.colors.bg_light,
+			fg_color = theme.colors.fg,
+			italic = false,
+		},
+		new_tab = {
+			bg_color = theme.colors.bg,
+			fg_color = theme.colors.fg_dim,
+		},
+		new_tab_hover = {
+			bg_color = theme.colors.bg_selection,
+			fg_color = theme.colors.green,
+		},
+	},
 }
 
 -- split pane
@@ -156,8 +209,8 @@ config.background = {
 config.default_domain = "WSL:Ubuntu"
 
 -- Set WezTerm environment
-config.hide_tab_bar_if_only_one_tab = true -- Hide WezTerm tabs since Zellij has its own
+-- config.hide_tab_bar_if_only_one_tab = true -- Hide WezTerm tabs since Zellij has its own
 -- Automatically launch or attach to a Zellij session on startup
-config.default_prog = { "zellij", "attach", "--create" }
+-- config.default_prog = { "zellij", "attach", "--create" }
 
 return config
