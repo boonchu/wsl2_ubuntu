@@ -44,7 +44,11 @@ config.initial_rows = 41
 config.color_scheme = "Ocean (dark) (terminal.sexy)"
 
 -- This is my chosen font, we will get into installing fonts on windows later
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font_with_fallback({
+	"JetBrains Mono",
+	"Symbols Nerd Font Mono",
+	"Noto Color Emoji",
+})
 config.font_size = 15
 config.launch_menu = launch_menu
 
@@ -207,6 +211,7 @@ config.background = {
 
 -- IMPORTANT: Sets WSL2 UBUNTU-22.04 as the defualt when opening Wezterm
 config.default_domain = "WSL:Ubuntu"
+config.front_end = "OpenGL"
 
 -- Set WezTerm environment
 -- config.hide_tab_bar_if_only_one_tab = true -- Hide WezTerm tabs since Zellij has its own
