@@ -5,6 +5,8 @@
 -- Run OptionalFeatures.exe
     - check 'Windows Subsystem for linux'
     - check 'Windows Hypervisor Platform'
+-- set the virtual disk to "sparse" mode
+    - `wsl --manage <DistroName> --set-sparse true`
 ```
 * `Zellij`
 ```
@@ -32,3 +34,10 @@
     - Background picture for terminal
 -- copy file `configs/wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
+* `troubleshooting`
+-- Use `diskpart` to shrink size of Ubuntu vdisk in WSL2
+  - Run Windows Powershell
+  - Run `diskpart`
+  - Run `select vdisk file="C:\Path\To\Your\ext4.vhdx"`
+  - Run `compact vdisk`
+
