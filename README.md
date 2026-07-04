@@ -7,6 +7,11 @@
     - check 'Windows Hypervisor Platform'
 -- set the virtual disk to "sparse" mode
     - `wsl --manage <DistroName> --set-sparse true`
+-- Edit c:\Users\<USERNAME>\.wslconfig
+[wsl2]
+memory=8GB
+swap=2GB
+MaxCrashDumpCount = 1
 ```
 * `Zellij`
 ```
@@ -40,4 +45,5 @@
   - Run `diskpart`
   - Run `select vdisk file="C:\Path\To\Your\ext4.vhdx"`
   - Run `compact vdisk`
+-- Run `wsl --update`
 
