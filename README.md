@@ -3,6 +3,7 @@
 ```
 -- Run cmd.exe
 -- Run OptionalFeatures.exe
+    - check 'Virtual Machine Platform'
     - check 'Windows Subsystem for linux'
     - check 'Windows Hypervisor Platform'
 -- set the virtual disk to "sparse" mode
@@ -10,7 +11,7 @@
 -- Edit c:\Users\<USERNAME>\.wslconfig
 [wsl2]
 memory=8GB
-swap=2GB
+swap=0
 MaxCrashDumpCount = 1
 ```
 * `Zellij`
