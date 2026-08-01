@@ -40,11 +40,52 @@ MaxCrashDumpCount = 1
     - Background picture for terminal
 -- copy file `configs/wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
-* `troubleshooting`
--- Use `diskpart` to shrink size of Ubuntu vdisk in WSL2
+* `Free disk space`
+-- Run PowerShell to find file larger than 2GB in CURRENT USER FOLDER\AppData\Local
+```
+Get-ChildItem "$env:USERPROFILE\AppData\Local" -Recurse -File -Force -ErrorAction SilentlyContinue |
+Where-Object { $_.Length -gt 2GB } |
+ ForEach-Object {
+     [PSCustomObject]@{
+         FileName   = $_.Name
+         Path       = $_.FullName
+         SizeGB     = [math]::Round($_.Length / 1GB, 2)
+         LastAccess = $_.LastAccessTime
+     }
+ } |
+ Sort-Object SizeGB -Descending
+
+FileName                                                       Path                                                                                                         Size
+ext4.vhdx                                                      C:\Users\XXXXX\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx        15
+wsl-crash-1785013471-19152-_usr_lib_code-server_lib_node-6.dmp C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785013471-19152-_usr_lib_code-server_lib_node-6.dmp 46
+wsl-crash-1785017797-35372-_usr_lib_code-server_lib_node-6.dmp C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785017797-35372-_usr_lib_code-server_lib_node-6.dmp 39
+wsl-crash-1785089664-649-_usr_lib_code-server_lib_node-6.dmp   C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785089664-649-_usr_lib_code-server_lib_node-6.dmp   34
+wsl-crash-1785086604-3194-_usr_lib_code-server_lib_node-6.dmp  C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785086604-3194-_usr_lib_code-server_lib_node-6.dmp  33
+wsl-crash-1785085516-75-_usr_lib_code-server_lib_node-6.dmp    C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785085516-75-_usr_lib_code-server_lib_node-6.dmp    33
+wsl-crash-1785014429-30748-_usr_lib_code-server_lib_node-6.dmp C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785014429-30748-_usr_lib_code-server_lib_node-6.dmp 32
+wsl-crash-1785088110-86-_usr_lib_code-server_lib_node-6.dmp    C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785088110-86-_usr_lib_code-server_lib_node-6.dmp    32
+swap.vhdx                                                      C:\Users\XXXXX\AppData\Local\Temp\C08CA811-4A81-48A0-BCBB-EAE1B38D8E1B\swap.vhdx     
+```
+-- Clean up files in `wsl-crash`
+-- Start WSL Linux distribution
+-- Cleanup docker images and unused Linux packages
+```
+# Docker cleanup (if used)
+docker container prune -f
+docker image prune -a -f
+docker volume prune -f
+docker system prune -a --volumes -f
+
+# System cleanup
+sudo apt-get clean
+sudo apt-get autoremove -y
+sudo rm -rf /tmp/*
+sudo rm -rf /var/tmp/
+```
+-- Use `diskpart` to shrink size of Ubuntu vdisk in WSL2. Take output from PowerShell scanning script.
   - Run Windows Powershell
   - Run `diskpart`
-  - Run `select vdisk file="C:\Path\To\Your\ext4.vhdx"`
+  - Run `select vdisk file="C:\Users\XXXXX\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx"`
   - Run `compact vdisk`
 -- Run `wsl --update`
 
