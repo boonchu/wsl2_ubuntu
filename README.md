@@ -66,8 +66,11 @@ wsl-crash-1785014429-30748-_usr_lib_code-server_lib_node-6.dmp C:\Users\XXXXX\Ap
 wsl-crash-1785088110-86-_usr_lib_code-server_lib_node-6.dmp    C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785088110-86-_usr_lib_code-server_lib_node-6.dmp    32
 swap.vhdx                                                      C:\Users\XXXXX\AppData\Local\Temp\C08CA811-4A81-48A0-BCBB-EAE1B38D8E1B\swap.vhdx     
 ```
+
 -- Clean up files in `wsl-crash`
+
 -- Start WSL Linux distribution
+
 -- Cleanup docker images and unused Linux packages
 ```
 # Docker cleanup (if used)
