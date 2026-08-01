@@ -89,6 +89,7 @@ nix-collect-garbage -d
 brew cleanup --prune=all
 ```
 -- Run `wsl --shutdown`
+
 -- Use `diskpart` to shrink size of Ubuntu vdisk in WSL2. Take output from PowerShell scanning script.
   - Run Windows Powershell
   - Run `diskpart`
