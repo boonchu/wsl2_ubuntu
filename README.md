@@ -84,6 +84,9 @@ sudo rm -rf /var/tmp/
 
 # nix cleanup
 nix-collect-garbage -d
+
+# brew cleanup
+brew cleanup --prune=all
 ```
 -- Use `diskpart` to shrink size of Ubuntu vdisk in WSL2. Take output from PowerShell scanning script.
   - Run Windows Powershell
