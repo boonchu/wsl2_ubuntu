@@ -103,3 +103,4 @@ brew cleanup --prune=all
 
 -- Run `wsl --update`
 
+-- Ref: https://netdevops.it/blog/fixing-wsl-crash---complete-recovery-guide-for-e_unexpected-errors/#step-2-create-data-backups
