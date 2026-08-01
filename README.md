@@ -40,7 +40,9 @@ MaxCrashDumpCount = 1
     - Background picture for terminal
 -- copy file `configs/wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
+
 * `Free disk space`
+  
 -- Run PowerShell to find file larger than 2GB in CURRENT USER FOLDER\AppData\Local
 ```
 Get-ChildItem "$env:USERPROFILE\AppData\Local" -Recurse -File -Force -ErrorAction SilentlyContinue |
