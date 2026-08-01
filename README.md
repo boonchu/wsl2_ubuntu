@@ -100,5 +100,6 @@ brew cleanup --prune=all
   - Run `diskpart`
   - Run `select vdisk file="C:\Users\XXXXX\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx"`
   - Run `compact vdisk`
+
 -- Run `wsl --update`
 
