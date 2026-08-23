@@ -14,6 +14,10 @@ memory=8GB
 swap=0
 MaxCrashDumpCount = 1
 ```
+
+* `NeoVIM`
+    * Follow this link, https://github.com/boonchu/nvim_typescript_ls/blob/master/README.md
+  
 * `Zellij`
 ```
 -- Install Zellij
@@ -21,6 +25,7 @@ MaxCrashDumpCount = 1
 -- set PATH
     - `export PATH=/home/bigchoo/.cargo/bin:$PATH`
 ```
+
 * `starship`
 ```
 -- Install Starship
@@ -29,6 +34,7 @@ MaxCrashDumpCount = 1
     - `eval "$(starship init bash)"`
 -- copy file `configs/starship.toml` to ~/.config/
 ```
+
 * `wezterm`
     * Gist https://gist.github.com/johnlindquist/346e18fd6875ae4207a9b69c62071e9a
     * Remap key https://github.com/boonchu/wsl2_ubuntu/blob/master/configs/wezterm.lua#L72-L94
