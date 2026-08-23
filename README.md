@@ -40,6 +40,7 @@ MaxCrashDumpCount = 1
     - Background picture for terminal
 -- copy file `configs/wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
+   * Remap key https://github.com/boonchu/wsl2_ubuntu/blob/master/configs/wezterm.lua#L72-L94
 
 * `Free disk space`
   
