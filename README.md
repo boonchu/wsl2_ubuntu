@@ -56,7 +56,9 @@ Where-Object { $_.Length -gt 2GB } |
      }
  } |
  Sort-Object SizeGB -Descending
-
+```
+-- example output
+```
 FileName                                                       Path                                                                                                         Size
 ext4.vhdx                                                      C:\Users\XXXXX\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx        15
 wsl-crash-1785013471-19152-_usr_lib_code-server_lib_node-6.dmp C:\Users\XXXXX\AppData\Local\Temp\wsl-crashes\wsl-crash-1785013471-19152-_usr_lib_code-server_lib_node-6.dmp 46
