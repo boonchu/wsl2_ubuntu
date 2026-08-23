@@ -31,6 +31,7 @@ MaxCrashDumpCount = 1
 ```
 * `wezterm`
     * Gist https://gist.github.com/johnlindquist/346e18fd6875ae4207a9b69c62071e9a
+    * Remap key https://github.com/boonchu/wsl2_ubuntu/blob/master/configs/wezterm.lua#L72-L94
 ```
 -- Install windows version, https://wezterm.org/install/windows.html
 -- rundll32.exe sysdm.cpl,EditEnvironmentVariables
@@ -40,8 +41,6 @@ MaxCrashDumpCount = 1
     - Background picture for terminal
 -- copy file `configs/wezterm.lua` from project to C:\Users\<USERNAME>\.config\wezterm\
 ```
-
-    * Remap key https://github.com/boonchu/wsl2_ubuntu/blob/master/configs/wezterm.lua#L72-L94
 
 * `Free disk space`
   
